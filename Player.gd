@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 400.0
 @export var side = 'p1'
+@onready var animation = $AnimationP1
 
 
 func _physics_process(delta):
@@ -27,6 +28,7 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
+	animation.play("AttackP1")
 	body.direction.x *= -1
 	body.SPEED += 5
 	Main.side = side

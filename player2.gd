@@ -3,12 +3,14 @@ extends CharacterBody2D
 
 const SPEED = 400.0
 @export var side = 'p2'
+@onready var animation = $AnimationP2
 
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction 
+	$SpriteP2.flip_h = true
 	
 	if side == 'p1':
 		direction = get_axis(KEY_W, KEY_S)
@@ -27,6 +29,7 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
+	animation.play("AttackP2")
 	body.direction.x *= -1
 	body.SPEED += 5
 	Main.side = side
