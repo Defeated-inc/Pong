@@ -5,6 +5,8 @@ const SPEED = 400.0
 @export var side = 'p2'
 @onready var animation = $AnimationP2
 
+var inventory:Inventory = Inventory.new()
+@onready var inv_p_2 = %InvP2
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -33,3 +35,9 @@ func _on_area_2d_body_entered(body):
 	body.direction.x *= -1
 	body.SPEED += 5
 	Main.side = side
+	
+func score(item:Item):
+	Main.p2_score += 1
+	inventory.add_item(item)
+	inv_p_2.show_items(inventory)
+	

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8a638qhmj1k1"]
+
+[ext_resource type="Script" path="res://BlackBall.gd" id="1_7fk2g"]
+[ext_resource type="Texture2D" uid="uid://cnuvksrlngtot" path="res://summonIdle.png" id="2_aijll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pykr"]
+size = Vector2(15, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yopec"]
+atlas = ExtResource("2_aijll")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj742"]
+atlas = ExtResource("2_aijll")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddxef"]
+atlas = ExtResource("2_aijll")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe4v7"]
+atlas = ExtResource("2_aijll")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7fav0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yopec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj742")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddxef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe4v7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BlackBall" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_7fk2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 14)
+shape = SubResource("RectangleShape2D_0pykr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 10)
+scale = Vector2(1.36, 1.36)
+sprite_frames = SubResource("SpriteFrames_7fav0")
+autoplay = "default"
