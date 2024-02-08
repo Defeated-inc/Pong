@@ -8,9 +8,7 @@ const SPEED = 400.0
 var inventory:Inventory = Inventory.new()
 @onready var inv_p_2 = %InvP2
 
-func _physics_process(delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+func _physics_process(_delta):
 	var direction 
 	$SpriteP2.flip_h = true
 	

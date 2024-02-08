@@ -9,7 +9,7 @@ var inventory:Inventory = Inventory.new()
 @onready var animation = $AnimationP1
 @onready var inv_p_1 = %InvP1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction 

@@ -10,9 +10,9 @@ func _ready():
 	red_ball.visible = false
 	red_ball.SPEED = 0
 	
-func _process(delta):
-	$p1_label.text = str(Main.p1_score)
-	$p2_label.text = str(Main.p2_score)
+func _process(_delta):
+	$UIPoints/p1_label.text = str(Main.p1_score)
+	$UIPoints/p2_label.text = str(Main.p2_score)
 
 func _on_top_body_entered(body):
 	body.direction.y *= -1

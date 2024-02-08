@@ -10,7 +10,7 @@ func _ready():
 	direction.y = [1, -1].pick_random()
 	direction.x = [1, -1].pick_random()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if direction:
 		velocity = direction * SPEED
 	else:
