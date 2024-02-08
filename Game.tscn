@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxbor4iumdqwq"]
+[gd_scene load_steps=17 format=3 uid="uid://cxbor4iumdqwq"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_dg4b3"]
 [ext_resource type="PackedScene" uid="uid://bk2nlojmv0v3u" path="res://player.tscn" id="1_j5muh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bd0bhupxs32ci" path="res://attacking.png" id="3_4rnhx"]
 [ext_resource type="Script" path="res://player2.gd" id="3_uw276"]
 [ext_resource type="Texture2D" uid="uid://b7ihhh58qqjah" path="res://BG.png" id="6_hkhsx"]
+[ext_resource type="Script" path="res://SaverLoader.gd" id="7_566nl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl275"]
 size = Vector2(1030.53, 65)
@@ -187,7 +188,32 @@ position = Vector2(511.5, 326.5)
 scale = Vector2(0.688667, 0.657576)
 texture = ExtResource("6_hkhsx")
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+offset_left = 445.0
+offset_top = 573.0
+offset_right = 571.0
+offset_bottom = 624.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Save" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "SAVE"
+
+[node name="Load" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "LOAD"
+
+[node name="SaverLoader" type="Node" parent="."]
+script = ExtResource("7_566nl")
+
 [connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
 [connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="pressed" from="UI/MarginContainer/HBoxContainer/Save" to="SaverLoader" method="save_game"]
+[connection signal="pressed" from="UI/MarginContainer/HBoxContainer/Load" to="SaverLoader" method="load_game"]
